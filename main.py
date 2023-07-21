@@ -6,4 +6,14 @@ def application(env, start_response):
     headers=[('Content-Type', 'text/plain')]
     start_response('200 OK', headers)
     
-    return 'Hola desde el server ligero python'.encode('utf-8')
+    return ['Hola desde el server ligero python'.encode('utf-8')]
+
+# creamos el servidor
+#make_server recibe obligaotiriamente 3 argumentos
+## 1. la direccion donde se va a ejecutar nuestro server
+## 2. El puerto donde escucha el server
+## 3. La funcion que se encarga de responder a las peticiones
+
+server = make_server('localhost',8000,application)
+# ahora ejecutamos el metodo
+server.serve_forever()
